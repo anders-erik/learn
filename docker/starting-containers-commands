@@ -1,0 +1,6 @@
+
+# start mysql server for getting-started-app
+docker run -d -v todo-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=todos mysql:8.0
+
+# start dev-container for getting-starts-app
+docker run -dp 10.10.10.24:3000:3000 --network todo-app --name gsc -w /app --mount type=bind,src="$(pwd)",target="/app" node:18-alpine sh -c "yarn install && yarn run dev"
