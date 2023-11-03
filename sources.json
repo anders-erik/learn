@@ -1,0 +1,26 @@
+[
+
+{
+	"id": 10,
+	"name": "6 Ways to create a javascript object",
+	"date" : "2023-11-03",
+	"URL": "https://skryvets.com/blog/2018/08/01/6-ways-to-create-a-javascript-object/",
+	"tags": ["javascript", "js", "objects"],
+	"shards": [
+		{
+			"source_id": 1,
+			"name": "object literal",
+			"type": "code",
+			"content": "var pizza = { \nname: 'Margherita',\nsize: 'medium',\nisVegetarian: true\n}"
+		},
+		{
+			"source_id": 2,
+			"name": "object literal",
+			"type": "code",
+			"content": "var pizza = new Object();\npizza.name = 'Margherita';\npizza.size = 'meidum';\npizza.isVegetarian = true;"
+		},
+		
+	]
+}
+
+]
