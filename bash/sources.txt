@@ -1,0 +1,122 @@
+### Sort 'ls' command by date
+https://superuser.com/questions/147027/how-can-i-sort-the-output-of-ls-by-last-modified-date
+- ls -t
+- ls -tr
+- ls -halt is for human readable, show hidden, print details, sort by date
+- POSIX stanard
+  - https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html
+- Warning: mistyping 'ls -halt' may cause your server to crash! 
+
+
+### Bash is throwing error on parentesis
+https://unix.stackexchange.com/questions/464629/bash-allow-parentheses-in-command-arguments-i-e-prevent-unexpected-token
+- Try echo bar\(1,3\)
+- echo a=(b) is a syntax error, but not export a=(b).
+- '(' and ')' are special token characters in the syntax of bash 
+
+
+
+### Hashing text online (SHA256)
+https://emn178.github.io/online-tools/sha256.html
+- :: Good way of making sure that I know EXACTLY what is being hashed when checksumming files
+
+
+### Edit a binary file
+https://stackoverflow.com/questions/839227/how-to-edit-a-binary-file-on-unix-systems
+- In Vim, you can type :%!xxd to turn it into a hex editor. :%!xxd -r to go back to normal mode. xxd is shipped in a Vim installation.
+   - See here for some remarks about editing binary files with Vim (it boils down to :set binary to avoid trouble
+- You can also try GHex 2 GNOME utilities. This give you the automated hex-to-ASCII on the side, as well as the various character/integer decodes at the bottom.
+- I use hexedit on Ubuntu:
+- Bless is a high quality, full featured hex editor.
+- :: I have HxD installed on my machine! I've barely used it though
+
+
+### GNU dates
+https://stackoverflow.com/questions/15870480/how-to-convert-a-date-time-string-to-an-integer-in-bash-shell
+- date --date="2013-04-06" '+%s'
+- Unix Time
+   - https://en.wikipedia.org/wiki/Unix_time
+
+
+### Counting files
+https://www.linuxjournal.com/content/how-count-files-directory-linux
+- ls -1 | wc -l
+- find . -type f | wc -l (files in directories + subdirectories)
+- find . -name "*.txt" -type f | wc -l  (specific files)
+
+
+### wc-uses (Red Hat)
+https://www.redhat.com/sysadmin/linux-wc-command
+- wc file.txt (output: 'lines words chars')
+- ls -1 ~/Code/Angband-4.2.3 | wc --lines (count lines of ls-piped data)
+	- There are a few caveats to keep in mind. I alias my ls command to include the --almost-all option, which omits the . and .. entries from directory listings. I also have ls set to ignore files ending in ~ or #, both of which are often used as extensions for backup files. Finally, by default, I don't view hidden files. That means that my report on the directory's contents isn't off by two (. and ..) but doesn't include any backup files or hidden files.
+- wc --char hidden.txt (useful for detecting invisable characters in file)
+- sed 's/\o302\xAD//' hidden.txt > fixed.txt \
+  wc --char fixed.txt
+- wc --bytes ~/pixel.png (du --bytes ~/pixel.png)
+
+
+### Remove last character from file
+https://stackoverflow.com/questions/27305177/how-can-i-remove-the-last-character-of-a-file-in-unix
+- sed '$ s/.$//' somefile
+- truncate -s-1 file
+	- The problem with a sed solution like sed '$ s/.$//' file is that it reads the whole file first (taking a long time with large files), then you need a temporary file (of the same size as the original):
+	sed '$ s/.$//' file  > tempfile
+	rm file; mv tempfile file
+		And then move the tempfile to replace the file. 
+- Here's another using ex, which I find not as cryptic as the sed solution:
+	-  printf '%s\n' '$' 's/.$//' wq | ex somefile
+
+
+### sha-sum only hashed the contents of file
+https://unix.stackexchange.com/questions/220017/does-the-hash-of-a-file-change-if-the-filename-changes
+- The hash of a file is the hash of its contents. Metadata such as the file name, timestamps, permissions, etc. have no influence on the hash.
+
+
+### Print file metadata
+https://unix.stackexchange.com/questions/243509/how-to-print-metadata-of-a-file-with-the-help-of-command-line
+- file gtu.pdf
+- stat /etc/hosts 
+- For most formats, and more detailed information, you can also use Exiftool:
+	- exiftool IMG_20151104_102543.jpg 
+
+
+### Why long and short commands?
+https://superuser.com/questions/174564/why-are-there-short-and-long-alternatives-for-command-line-options
+- Originally there were only single-character options. Some programs took multiple-character options, but still with a single dash. AFAIK double-dash multiple-character options come from GNU; they were introduced because they are more readable and often more memorable (and you can have more than 52 of them). Many programs now have both: short options for when you're typing on the command line and remember the character, long options for scripts or on the command line if you only remember the longer option name.
+	-  +1 for mentioning that long options are better for scripts, because they help document things 
+
+
+
+
+### du - Red Hat Blog
+https://www.redhat.com/sysadmin/du-command-options
+- The du command is a standard Linux/Unix command that allows a user to gain disk usage information quickly. It is best applied to specific directories
+- e.g. 'du /home/tcarrigan'
+	- --time
+	- h, s, a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

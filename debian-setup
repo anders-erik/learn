@@ -1,3 +1,32 @@
+### Getting debian
+https://cdimage.debian.org/debian-cd/12.2.0/amd64/iso-cd/
+- 'curl -X GET --output debian.iso https://saimei.ftp.acc.umu.se/debian-cd/12.2.0/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso'
+- sha256sum debian.iso
+
+### Comparing hash of two files
+https://unix.stackexchange.com/questions/713026/how-to-compare-hashes-of-files-in-bash-script
+"
+#!/bin/bash
+
+set -e
+file="/home/test.json"
+
+if [[ -s $file.sha256 ]]; then
+    if ! sha256sum --check "$file.sha256"; then
+        echo "stored hash for '$file' does not match existing file, storing new hash"
+        sha256sum "$file" > "$file.sha256"
+    else
+        : # hash file exists and matches existing file, do nothing
+    fi
+else
+    echo "no stored hash for '$file', creating hash file"
+    sha256sum "$file" > "$file.sha256"
+fi
+
+"
+
+
+
 ### SSH
 https://www.cyberciti.biz/faq/ubuntu-linux-install-openssh-server/
 ´´´
