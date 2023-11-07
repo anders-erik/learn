@@ -1,3 +1,29 @@
+# 2023-11-06
+
+### Start interactive shell
+docker build -t anderserik/learn-bash .
+docker run -it anderserik/learn-bash
+
+
+### tmux - first steps
+https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
+
+### tmux - cheat sheet
+https://tmuxcheatsheet.com/
+
+### Emacs - fomo as a Vim user
+https://www.reddit.com/r/neovim/comments/13qwbwg/switching_from_emacs_my_experience/
+-  I’ve been using Neovim since 0.4 (and Vim for a little while before that) and have always had FOMO about Emacs, but this post reaffirmed the choices I made in the first place 
+- Used VSCode for a while but the vim layer never felt right. Switched to Neovim and I can only agree with you. Lua is a blessing, I really prefer it over elisp
+- I feel there has been a lot of cross-pollination between the ecosystems. A lot of the good ideas from many Emacs plugins have been implemented in Neovim.
+
+### Install neovim ubuntu server
+apt install neovim
+nvim # Start neovim after install
+
+
+# 2023-10- ???
+
 ### Sort 'ls' command by date
 https://superuser.com/questions/147027/how-can-i-sort-the-output-of-ls-by-last-modified-date
 - ls -t
