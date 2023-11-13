@@ -10,7 +10,7 @@ for ((i=1;i<=height;i++)); do
 	
 	echo space $i
 done
-sleep 1
+sleep .5
 
 
 
