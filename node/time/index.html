@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive JavaScript Tutorial</title>
+</head>
+
+<body>
+  <h1>Interactive JavaScript Tutorial</h1>
+  <p>Enter your JavaScript code below:</p>
+  <textarea id="codeInput" rows="10" cols="50" onkeydown="handleKeyPress(event)"></textarea>
+  <button onclick="runCode()">Run Code</button>
+  <div id="output"></div>
+
+  <script>
+
+    let fetchRun = function (code) {
+      fetch('/run', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 'code': code }),
+      })
+        .then(response => response.json()) // Assuming the response is JSON, adjust as needed
+        .then(data => {
+          console.log('Success! \n\nOUTPUT:');
+          console.log(data.output);
+          document.getElementById('output').innerHTML = `<strong>Result:</strong> ${data.output}`;
+
+          // Handle the response data as needed
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Handle errors
+        });
+    }
+
+
+
+    var userInput = "";
+    let result;
+    var functionArray = [];
+
+
+
+    let caseArray = [];
+
+
+    function runCode() {
+      // Get the code from the textarea
+      let code = document.getElementById('codeInput').value;
+      code = getMonacoText();
+      fetchRun(code);
+
+
+      /*
+      try {
+        // Execute the code using eval()
+        //const result = eval(code);
+        userInput = "console.log('in function'); return 2+4;";
+        //userInput = code;
+        result = Function(code);
+
+
+        //console.log(result);
+        //functionArray.push(result);
+
+        // Display the result in the output div
+        document.getElementById('output').innerHTML = `<strong>Result:</strong> ${result}`;
+      } catch (error) {
+        // Display any errors that occur during execution
+        document.getElementById('output').innerHTML = `<strong>Error:</strong> ${error.message}`;
+      }
+      */
+    }
+
+    function handleKeyPress(event) {
+      // Check if the pressed key is Enter (key code 13) and Ctrl key is also pressed
+      if (event.key === 's' && event.ctrlKey) {
+        // Prevent the default behavior (newline in textarea)
+        event.preventDefault();
+
+        // Run the code when Ctrl+Enter is pressed
+        runCode();
+      }
+
+      if (event.key == 'Tab') {
+        console.log('tabtab');
+
+      }
+
+    }
+
+
+  </script>
+
+
+
+
+
+
+  <!-- https://github.com/microsoft/monaco-editor -->
+  <!-- https://stackoverflow.com/questions/38086013/get-the-value-of-monaco-editor -->
+  <!-- https://github.com/microsoft/monaco-editor/blob/main/samples/browser-amd-editor/index.html -->
+
+
+
+  <h2>Monaco Editor Sample</h2>
+  <div id="container" onkeydown="handleKeyPress(event)" style="width: 600px; height: 300px; border: 1px solid grey"></div>
+
+  <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
+  <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+
+  <script>
+
+    var editor;
+    require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
+
+    require(['vs/editor/editor.main'], function () {
+      editor = monaco.editor.create(document.getElementById('container'), {
+        value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+        language: 'javascript'
+      });
+    });
+  </script>
+
+  <script>
+    let getMonacoText = function () {
+      //alert(editor.getValue());
+      console.log( document.getElementById('container').valueOf().textContent)
+      return editor.getValue();
+    }
+  </script>
+</body>
+
+</html>
