@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"name": "Print current Unix time (seconds)",
+		"answer": "https://time.is/Unix_time",
+		"solutions" : {
+			"1": "console.log(Math.floor(Date.now() / 1000))"
+		},
+		"created_time": 1700000000,
+		"created_date": "2023-11-14"
+	},
+	{
+		"id": 2,
+		"name": "Convert March 22 1994 to Unix time",
+		"answer": "https://time.is/Unix_time",
+		"solutions" : {
+			"1": "console.log(Math.floor(new Date('1994-03-22') / 1000))"
+		},
+		"created_time": 1700000000,
+		"created_date": "2023-11-14"
+	}
+
+]

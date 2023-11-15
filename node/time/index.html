@@ -121,7 +121,7 @@
 
     require(['vs/editor/editor.main'], function () {
       editor = monaco.editor.create(document.getElementById('container'), {
-        value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+        value: ['function x() {', '\tconsole.log("Hello world!");', '}', 'console.log(Math.floor(Date.now() / 1000));'].join('\n'),
         language: 'javascript'
       });
     });
@@ -134,6 +134,71 @@
       return editor.getValue();
     }
   </script>
+
+
+
+
+
+
+
+
+<div id="output" style="border: dashed red 5px;"></div>
+
+    <script>
+        // Your array of objects
+        var data = [
+            {
+                "id": 1,
+                "name": "Print current Unix time (seconds)",
+                "answer": "https://time.is/Unix_time",
+                "solutions": {
+                    "1": "console.log(Math.floor(Date.now() / 1000))"
+                },
+                "created_time": 1700000000,
+                "created_date": "2023-11-14"
+            },
+            {
+                "id": 2,
+                "name": "Convert March 22 1994 to Unix time",
+                "answer": "https://time.is/Unix_time",
+                "solutions": {
+                    "1": "console.log(Math.floor(new Date('1994-03-22') / 1000))"
+                },
+                "created_time": 1700000000,
+                "created_date": "2023-11-14"
+            }
+        ];
+
+        // Function to display the array
+        function displayArray() {
+            var outputDiv = document.getElementById('output');
+
+            // Loop through each object in the array
+            data.forEach(function (item) {
+                // Create a new div for each object
+                var div = document.createElement('div');
+
+                // Populate the div with object properties
+                div.innerHTML = `
+                    <p>ID: ${item.id}</p>
+                    <p>Name: ${item.name}</p>
+                    <p>Answer: <a href="${item.answer}" target="_blank">${item.answer}</a></p>
+                    <p>Solution: ${item.solutions["1"]}</p>
+                    <p>Created Time: ${item.created_time}</p>
+                    <p>Created Date: ${item.created_date}</p>
+                    <hr>
+                `;
+
+                // Append the div to the output container
+                outputDiv.appendChild(div);
+            });
+        }
+
+        // Call the displayArray function when the page loads
+         window.onload = displayArray;
+    </script>
+
+
 </body>
 
 </html>
