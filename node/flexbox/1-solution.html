@@ -1,0 +1,79 @@
+<style>
+    #bod {
+        height: 50vh;
+        width: 100%;
+        background-color: #f0f0f0;
+        /* Change the background color as needed */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
+    }
+
+
+    .hori {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: xx-large;
+    }
+
+    .hori1 {
+        background-color: rgb(138, 48, 48);
+        height: 30px;
+    }
+
+
+    .hori2 {
+        background-color: rgb(42, 165, 149);
+        height: 30px;
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .left {
+        background-color: rgb(165, 126, 42);
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .right {
+        background-color: rgb(161, 42, 165);
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .hori3 {
+        background-color: rgb(91, 165, 42);
+        height: 30px;
+    }
+</style>
+
+
+<div id="bod">
+
+
+    <div class="hori hori1"></div>
+    <div class="hori hori2">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div class="hori hori3"></div>
+
+
+</div>

@@ -1,54 +1,141 @@
 <!DOCTYPE html>
+<!-- https://chat.openai.com/c/3c52efae-e5de-482b-92e5-46b7605363cf -->
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Editor</title>
     <style>
-        #editor {
-            height: 200px;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
-        #preview {
-            border: 1px solid #ccc;
-            height: 200px;
+
+
+
+        #bottom-container {
+            height: 50vh;
+            width: 100%;
+            display: flex;
         }
+
+        #left-panel {
+            width: 25%;
+            background-color: #ddd;
+            /* Change the background color as needed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .toggle {
+            margin-bottom: 10px;
+        }
+
+        #right-panel {
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+
+
+        #bod {
+            height: 50vh;
+            width: 100%;
+            background-color: #f69090;
+            /*  */
+            
+        }
+
     </style>
 </head>
+
 <body>
 
-    <h1>Code Editor</h1>
+    <div id="bod">
 
-    <!-- Code editor textarea -->
-    <textarea id="editor"></textarea>
+        
+    </div>
 
-    <br>
 
-    <!-- Run button to execute the code -->
-    <button onclick="runCode()">Run Code</button>
 
-    <hr>
 
-    <!-- Preview area -->
-    <div id="preview"></div>
+
+
+
+    <div id="bottom-container">
+        <div id="left-panel">
+            <!-- Toggle Switches -->
+            <div class="toggle">
+                <label for="toggle1">Toggle 1</label>
+                <input type="checkbox" id="toggle1" onchange="loadImage('1.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle2">Toggle 2</label>
+                <input type="checkbox" id="toggle2" onchange="loadImage('2.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle3">Toggle 3</label>
+                <input type="checkbox" id="toggle3" onchange="loadImage('3.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle4">Toggle 4</label>
+                <input type="checkbox" id="toggle4" onchange="loadImage('4.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle5">Toggle 5</label>
+                <input type="checkbox" id="toggle5" onchange="loadImage('5.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle6">Toggle 6</label>
+                <input type="checkbox" id="toggle6" onchange="loadImage('6.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle7">Toggle 7</label>
+                <input type="checkbox" id="toggle7" onchange="loadImage('7.bmp')">
+            </div>
+            <div class="toggle">
+                <label for="toggle8">Toggle 8</label>
+                <input type="checkbox" id="toggle8" onchange="loadImage('8.bmp')">
+            </div>
+        </div>
+
+        <div id="right-panel">
+            <!-- Image Goes Here -->
+            <img id="image" src="" alt="Image">
+        </div>
+    </div>
 
     <script>
-        function runCode() {
-            // Get the code from the editor
-            var code = document.getElementById("editor").value;
 
-            // Get the preview area
-            var preview = document.getElementById("preview");
 
-            // Set the content of the preview area to the user's code
-            preview.innerHTML = code;
+        function loadImage(imageName) {
+            document.getElementById('image').src = imageName;
+        }
 
-            // You can also create an iframe and set its content
-            // var iframe = document.createElement('iframe');
-            // iframe.srcdoc = code;
-            // preview.innerHTML = '';
-            // preview.appendChild(iframe);
+        document.getElementById('image').src = '0.bmp';
+
+        for (let i = 7; i > 0; i--) {
+            var tog = document.getElementById('toggle' + i);
+            if (tog.checked) {
+                console.log(i);
+                loadImage(i + '.bmp');
+                break;
+            }
         }
     </script>
 
 </body>
+
 </html>
