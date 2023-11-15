@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor</title>
+    <style>
+        #editor {
+            height: 200px;
+        }
+        #preview {
+            border: 1px solid #ccc;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Code Editor</h1>
+
+    <!-- Code editor textarea -->
+    <textarea id="editor"></textarea>
+
+    <br>
+
+    <!-- Run button to execute the code -->
+    <button onclick="runCode()">Run Code</button>
+
+    <hr>
+
+    <!-- Preview area -->
+    <div id="preview"></div>
+
+    <script>
+        function runCode() {
+            // Get the code from the editor
+            var code = document.getElementById("editor").value;
+
+            // Get the preview area
+            var preview = document.getElementById("preview");
+
+            // Set the content of the preview area to the user's code
+            preview.innerHTML = code;
+
+            // You can also create an iframe and set its content
+            // var iframe = document.createElement('iframe');
+            // iframe.srcdoc = code;
+            // preview.innerHTML = '';
+            // preview.appendChild(iframe);
+        }
+    </script>
+
+</body>
+</html>
