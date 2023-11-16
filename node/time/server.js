@@ -31,7 +31,7 @@ app.use(express.static(__dirname));
 
 
 
-
+// Run recieved javascript code
 const vm = require('vm');
 
 function runCode(code, input) {
