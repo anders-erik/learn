@@ -16,7 +16,7 @@
 
 
         #bottom-container {
-            height: 45vh;
+            height: 50vh;
             width: 100%;
             display: flex;
         }
@@ -49,7 +49,7 @@
 
 
         #body {
-            height: 55vh;
+            height: 50vh;
             width: 100%;
             background-color: #f69090;
             /* keep above? */
@@ -61,7 +61,7 @@
 </head>
 
 <body>
-    <toggle id="2"></toggle> <!--select which  -->
+    <toggle id="1"></toggle> <!--select which  -->
 
     <div id="body">
         
@@ -80,39 +80,39 @@
             <h2>Tests</h2>
             <div class="toggle">
                 <label for="toggle1"> 0</label>
-                <input type="checkbox" id="toggle0" onchange="loadImage('./img-jpg/0.jpg')">
+                <input type="checkbox" id="toggle0" onchange="loadImage('0.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle1"> 1</label>
-                <input type="checkbox" id="toggle1" onchange="loadImage('./img-jpg/1.jpg')">
+                <input type="checkbox" id="toggle1" onchange="loadImage('1.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle2"> 2</label>
-                <input type="checkbox" id="toggle2" onchange="loadImage('./img-jpg/2.jpg')">
+                <input type="checkbox" id="toggle2" onchange="loadImage('2.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle3"> 3</label>
-                <input type="checkbox" id="toggle3" onchange="loadImage('./img-jpg/3.jpg')">
+                <input type="checkbox" id="toggle3" onchange="loadImage('3.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle4"> 4</label>
-                <input type="checkbox" id="toggle4" onchange="loadImage('./img-jpg/4.jpg')">
+                <input type="checkbox" id="toggle4" onchange="loadImage('4.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle5"> 5</label>
-                <input type="checkbox" id="toggle5" onchange="loadImage('./img-jpg/5.jpg')">
+                <input type="checkbox" id="toggle5" onchange="loadImage('5.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle6"> 6</label>
-                <input type="checkbox" id="toggle6" onchange="loadImage('./img-jpg/6.jpg')">
+                <input type="checkbox" id="toggle6" onchange="loadImage('6.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle7"> 7</label>
-                <input type="checkbox" id="toggle7" onchange="loadImage('./img-jpg/7.jpg')">
+                <input type="checkbox" id="toggle7" onchange="loadImage('7.bmp')">
             </div>
             <div class="toggle">
                 <label for="toggle8"> 8</label>
-                <input type="checkbox" id="toggle8" onchange="loadImage('./img-jpg/8.jpg')">
+                <input type="checkbox" id="toggle8" onchange="loadImage('8.bmp')">
             </div>
         </div>
 
@@ -132,12 +132,11 @@
         //document.getElementById('image').src = '0.bmp';
         let toggle_element = document.getElementsByTagName('toggle')[0];
         let toggle_selection = toggle_element.id;
-        document.getElementById('image').src = './img-jpg/' + toggle_selection + '.jpg';
+        document.getElementById('image').src = toggle_selection + '.bmp';
         let tag = document.getElementById('toggle' + toggle_selection);
         tag.checked = true;
 
         // if toggle selection is not cleared on reload
-        /*
         for (let i = 7; i >= 0; i--) {
             var tog = document.getElementById('toggle' + i);
             if (tog.checked) {
@@ -146,7 +145,6 @@
                 break;
             }
         }
-        */
     </script>
 
 </body>
