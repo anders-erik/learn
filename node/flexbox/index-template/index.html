@@ -61,7 +61,7 @@
 </head>
 
 <body>
-    <toggle id="2"></toggle> <!--select which  -->
+    <toggle id="2"></toggle> <!--select test image to display on load -->
 
     <div id="body">
         
@@ -122,18 +122,43 @@
         </div>
     </div>
 
+
+
+
+
     <script>
 
+        function uncheckAllBut(digit){
+            let checkboxes = document.getElementsByTagName('input');
+
+            for (let i = 0; i < checkboxes.length; i++){
+                //document.getElementsByTagName('toggle')[0].textContent += 'a';
+                if(i == digit){}
+                else
+                    checkboxes[i].checked = false;
+            }
+            // THIS IS NOT WORKING AND I CANT FIGURE OUT WHY!!!
+            // Maybe changing the 'checkbox' is not sufficient. I might just be a copy of the real one?
+            checkboxes.forEach(checkbox => {
+                //checkbox.checked = true;
+                //document.getElementsByTagName('toggle')[0].textContent = 'a';
+
+            });
+        }
 
         function loadImage(imageName) {
             document.getElementById('image').src = imageName;
+
+            // uncheck test checkboxes
+            let digit = imageName.match(/\d+/)[0];
+            uncheckAllBut(digit);
         }
 
         //document.getElementById('image').src = '0.bmp';
-        let toggle_element = document.getElementsByTagName('toggle')[0];
-        let toggle_selection = toggle_element.id;
-        document.getElementById('image').src = './img-jpg/' + toggle_selection + '.jpg';
-        let tag = document.getElementById('toggle' + toggle_selection);
+        let check_element = document.getElementsByTagName('toggle')[0];
+        let check_selection = check_element.id;
+        document.getElementById('image').src = './img-jpg/' + check_selection + '.jpg';
+        let tag = document.getElementById('toggle' + check_selection);
         tag.checked = true;
 
         // if toggle selection is not cleared on reload

@@ -53,18 +53,60 @@
             width: 100%;
             background-color: #f69090;
             /* keep above? */
-            
+            display: flex;
+            flex-direction: column;
+
+        }
+        #body > div {
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #top {
+            background-color: #3bb4ff;
+            height: 50px;
         }
 
+        #center {
+            background-color: #3bffa3;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+
+        }
+        #left {
+            background-color: #ff5d5b;
+            width: 20%;
+            height: 100%;
+        }
+        #right{
+            background-color: #ffbd4c;
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        #bottom {
+            background-color: #3bb4ff;
+            height: 50px;
+        }
+        
 
     </style>
 </head>
 
 <body>
-    <toggle id="2"></toggle> <!--select test image to display on load -->
+    <toggle id="1"></toggle> <!--select which  -->
 
     <div id="body">
-        
+
+        <div id="top">top</div>
+        <div id="center">
+            <div id="left"></div>
+            <div id="right"></div>
+        </div>
+        <div id="bottom">bottom</div>
         
     </div>
 
@@ -122,43 +164,18 @@
         </div>
     </div>
 
-
-
-
-
     <script>
 
-        function uncheckAllBut(digit){
-            let checkboxes = document.getElementsByTagName('input');
-
-            for (let i = 0; i < checkboxes.length; i++){
-                //document.getElementsByTagName('toggle')[0].textContent += 'a';
-                if(i == digit){}
-                else
-                    checkboxes[i].checked = false;
-            }
-            // THIS IS NOT WORKING AND I CANT FIGURE OUT WHY!!!
-            // Maybe changing the 'checkbox' is not sufficient. I might just be a copy of the real one?
-            checkboxes.forEach(checkbox => {
-                //checkbox.checked = true;
-                //document.getElementsByTagName('toggle')[0].textContent = 'a';
-
-            });
-        }
 
         function loadImage(imageName) {
             document.getElementById('image').src = imageName;
-
-            // uncheck test checkboxes
-            let digit = imageName.match(/\d+/)[0];
-            uncheckAllBut(digit);
         }
 
         //document.getElementById('image').src = '0.bmp';
-        let check_element = document.getElementsByTagName('toggle')[0];
-        let check_selection = check_element.id;
-        document.getElementById('image').src = './img-jpg/' + check_selection + '.jpg';
-        let tag = document.getElementById('toggle' + check_selection);
+        let toggle_element = document.getElementsByTagName('toggle')[0];
+        let toggle_selection = toggle_element.id;
+        document.getElementById('image').src = './img-jpg/' + toggle_selection + '.jpg';
+        let tag = document.getElementById('toggle' + toggle_selection);
         tag.checked = true;
 
         // if toggle selection is not cleared on reload
